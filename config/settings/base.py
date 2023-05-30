@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'src.main',
     'src.account',
     'src.cart',
-    # 'src.order',
+    'src.order',
 
 ]
 
@@ -116,3 +116,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'account.CustomUser'
