@@ -7,7 +7,7 @@ from .models import *
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'dollarRate', 'price',
-                    'available', 'updated', 'category', 'manufacturer', 'gender', 'get_image', 'id']
+                    'available', 'updated', 'category', 'manufacturer', 'gender', 'get_image', 'id', 'slug']
     list_filter = ['available', 'created', 'updated']
     list_editable = ['price', 'available', 'gender']
     search_fields = ('name', 'manufacturer__name', 'category__name')

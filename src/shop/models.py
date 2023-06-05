@@ -125,7 +125,7 @@ class Product(models.Model):
                 self.name = data['name']
                 self.description = data['description']
 
-                # self.slug = create_slug(data['name'])
+                self.slug = create_slug(data['name'])
                 # self.slug = slugify(f'{kwargs["manufacturer"]} {data['name']} {kwargs["brand_code"]}')
 
             # else:
@@ -144,7 +144,7 @@ class Product(models.Model):
             Decimal('.01'))
 
     def get_absolute_url(self):
-        return reverse('product_detail',
+        return reverse('shop:product_detail',
                        args=[self.category.slug, self.id, self.slug])
 
 
