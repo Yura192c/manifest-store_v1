@@ -1,0 +1,247 @@
+.b-content{
+    padding: 0 0 15px 0;
+    margin-top: 120px;
+}
+
+.b-container{
+    min-width: 320px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.b-container-2col{
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.b-c2c-left{
+    width: 227px;
+    min-width: 227px;
+    padding: 0 17px 0 0;
+}
+
+.b-side-nav{
+    margin: 0 0 25px 0;
+    list-style: none;
+    vertical-align: top;
+}
+
+.b-side-nav li{
+    position: relative;
+}
+
+.b-side-nav li a{
+    display: block;
+    text-decoration: none;
+    padding: 8px 15px;
+    border: 1px solid #e6e6e6;
+    margin: -1px 0 0 0;
+    font-weight: 300;
+    color: #fff;
+    line-height: 20px;
+    position: relative;
+    transition: none;
+}
+
+h1.main-title{
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+article.text{
+    font-size: 14px;
+    line-height: 1.5 !important;
+    padding: 0 0 20px 0 !important;
+}
+
+.row{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+/*col-md-3*/
+.col-md-3{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px 15px;
+    border: 0px;
+    font-size: 15px;
+    vertical-align: baseline;
+    position: relative;
+    min-height: 1px;
+    float: left;
+    width: 292.5px;
+    font-family: Montserrat, sans-serif;
+}
+
+.col-md-3 .contact_block{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    vertical-align: baseline;
+}
+
+.col-md-3 .contact_block_label_1{
+    box-sizing: border-box;
+    margin: 0px 0px 5px;
+    padding: 0px;
+    border: 0px;
+    font-size: 20px;
+    vertical-align: baseline;
+    color: rgb(127, 127, 127);
+    line-height: 20px;
+}
+
+.col-md-3 .telephone{
+    box-sizing: border-box;
+    margin: 0px 0px 10px;
+    padding: 0px;
+    border: 0px;
+    font-size: 18px;
+    vertical-align: baseline;
+    line-height: 22px;
+    color: rgb(226, 223, 223);
+} 
+
+.col-md-3 .contact_block_label_2{
+    box-sizing: border-box;
+    margin: 30px 0px 5px;
+    padding: 0px;
+    border: 0px;
+    font-size: 20px;
+    vertical-align: baseline;
+    color: rgb(127, 127, 127);
+    line-height: 20px;
+}
+
+.col-md-3 .email{
+    box-sizing: border-box;
+    margin: 0px 0px 10px;
+    padding: 0px;
+    border: 0px;
+    font-size: 18px;
+    vertical-align: baseline;
+    line-height: 22px;
+    color: rgb(68, 66, 66);
+}
+.col-md-3 .email a{
+    box-sizing: border-box;
+    background-color: transparent;
+    color: rgb(66, 139, 202);
+    text-decoration-line: none;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    vertical-align: baseline;
+    outline: none;
+    cursor: pointer;
+}
+
+
+/*col-md-6*/
+
+.col-md-6{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px 15px;
+    border: 0px;
+    font-size: 15px;
+    vertical-align: baseline;
+    position: relative;
+    min-height: 1px;
+    float: left;
+    width: 585px;
+    font-family: Montserrat, sans-serif;
+}
+
+.col-md-6 .contact_block {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    vertical-align: baseline;
+}
+
+.col-md-6 .contact_block_label{
+    box-sizing: border-box;
+    margin: 0px 0px 5px;
+    padding: 0px;
+    border: 0px;
+    font-size: 20px;
+    vertical-align: baseline;
+    color: rgb(127, 127, 127);
+    line-height: 20px;
+}
+
+.col-md-6 .contact_block p {
+    box-sizing: border-box;
+    margin: 0px 0px 10px;
+    padding: 0px;
+    border: 0px;
+    font-size: 18px;
+    vertical-align: baseline;
+    line-height: 22px;
+    color: rgb(226, 223, 223);
+}
+
+.address span{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    vertical-align: baseline;
+
+}
+
+
+/*col-md-9*/
+.col-md-9{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px 15px;
+    border: 0px;
+    font-size: 15px;
+    vertical-align: baseline;
+    position: relative;
+    min-height: 1px;
+    float: left;
+    width: 292.5px;
+    font-family: Montserrat, sans-serif;
+}
+
+.col-md-9 .contact_block{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    vertical-align: baseline;
+}
+
+.col-md-9 .contact_block_label{
+    box-sizing: border-box;
+    margin: 0px 0px 5px;
+    padding: 0px;
+    border: 0px;
+    font-size: 20px;
+    vertical-align: baseline;
+    color: rgb(127, 127, 127);
+    line-height: 20px;
+}
+
+.work_time{
+    box-sizing: border-box;
+    margin: 0px 0px 10px;
+    padding: 0px;
+    border: 0px;
+    font-size: 18px;
+    vertical-align: baseline;
+    line-height: 22px;
+    color: rgb(226, 223, 223);
+}

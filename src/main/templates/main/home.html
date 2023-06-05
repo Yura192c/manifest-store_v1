@@ -1,0 +1,89 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block cssblock %}
+    <link rel="stylesheet" href="{% static 'main/css/home.css' %}">
+{% endblock %}
+
+{% block title %}
+    Домашняя страница
+{% endblock %}
+
+{% block content %}
+    <div class="slider">
+        {#    -----------#}
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="
+                        background: url({% static 'main/img/slider/slide2.png' %}) no-repeat;
+                        background-size: 100%;">
+                    {#      <img src="..." class="d-block w-100" alt="...">#}
+                    <div class="slider_inner">
+                        <h1>manifest store</h1>
+                    </div>
+                </div>
+                <div class="carousel-item" style="
+                        background: url({% static 'main/img/slider/slide1.png' %}) no-repeat;
+                        background-size: 100%;">
+                    <div class="slider_inner">
+                        <h1>разные бренды</h1>
+                    </div>
+                </div>
+                <div class="carousel-item" style="
+                        background: url({% static 'main/img/slider/slide3.png' %}) no-repeat;
+                        background-size: 100%;">
+                    <div class="slider_inner">
+                        <h1>разные стили</h1>
+                    </div>
+                </div>
+                <div class="carousel-item" style="
+                        background: url({% static 'main/img/slider/slide4.png' %}) no-repeat;
+                        background-size: 100%;">
+                    <div class="slider_inner">
+                        <h1>один путь к себе</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="section">
+        <div class="container">
+
+            <div class="section_header">
+                <header class="section_logo">
+                    <img src="{% static 'main/img/logo_svf.svg' %}" alt="Logo">
+                </header>
+
+                <h1 class="section_title">БРЕНДЫ БЛИЖЕ ЧЕМ ТЫ ДУМАЕШЬ… </h1>
+
+                <p class="section_text">Мы сокращаем расстояния между
+                    брендами и людьми, давая им возможность
+                    проявляться через стиль</p>
+
+
+            </div>
+        </div>
+        <div class="home_container">
+            <div class="info_content">
+                <div class="left_block">
+                    <div class="info_text">
+                        <h1>Брендовая одежда и аксессуары с любой точки планеты</h1>
+                    </div>
+                    <div class="gallery_1">
+                        <h1>on</h1>
+                        <a href={% url 'shop:product_list' %}?hender=M>Выбрать</a>
+                    </div>
+                </div>
+                <div class="right_block">
+                    <div class="gallery_top">
+                        <h1>ona</h1>
+                        <a href={% url 'shop:product_list' %}?hender=W>Выбрать</a>
+                    </div>
+                    <div class="gallery_bottom">
+                        <h1>kid</h1>
+                        <a href={% url 'shop:product_list' %}?hender=K>Выбрать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

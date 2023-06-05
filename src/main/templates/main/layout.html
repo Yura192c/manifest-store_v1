@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}layout{% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Montserrat:wght@400;500;600&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href={% static 'main/css/layout.css' %}>
+    {% block cssblock %}{% endblock %}
+    <script src="https://kit.fontawesome.com/b8a24b2ae0.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<header class="header">
+    <nav class="header__nav" role="navigation">
+        <div class="nav-bar">
+            <div id="menuToggle">
+                <input type="checkbox"/>
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul id="menu" class="menu">
+                    <a href="{% url 'home' %}">
+                        <li>Главная</li>
+                    </a>
+                    <a href="#">
+                        <li>О нас</li>
+                    </a>
+                    <a href="{% url 'shop:product_list' %}">
+                        <li>Каталог</li>
+                    </a>
+                    <a href="{% url 'cart:cart_detail' %}">
+                        <li>Корзина{% if cart.get_total_items %}: <small>{{ cart.get_total_items }} товара</small>{% endif %}</li>
+                    </a>
+                    <a href="#">
+                        <li>Покупателям</li>
+                    </a>
+                    <a href="#">
+                        <li>Контакты</li>
+                    </a>
+                    <ul class="b-base-soc-list">
+                        <li>
+                            <a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        </li>
+                        <li><a href="https://t.me/" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                        <li><a href="https://t.me/" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+                    </ul>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+    <div class="logo"><img src="{% static 'main/img/logo_svf.svg' %}" alt="Logo"></div>
+</header>
+
+{% block content %}
+{% endblock %}
+
+<footer class="footer">
+    <div class="info">
+        <div class="contacts">
+            <h1 class="telephone">{{ mobile }}</h1>
+            <p class="mail">{{ email }}</p>
+        </div>
+        <div class="soc-links">
+            <ul class="b-base-soc-list footer-list">
+                <li>
+                    <a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                </li>
+                <li><a href="https://t.me/" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                <li><a href="https://t.me/" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+            </ul>
+        </div>
+    </div>
+{#    <div class="test">#}
+{#        {% include 'main/_page-footer.html' %}#}
+{#    </div>#}
+    <div class="footer-down">
+        <h2 class="company-info">ИП Иванов И. И. ИНН: 631898349999 ОГРН: 310631807100222</h2>
+    </div>
+
+</footer>
+
+{% block jsblock %}
+{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
