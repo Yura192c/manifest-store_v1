@@ -7,6 +7,10 @@ name = "pypi"
 django = "*"
 django-debug-toolbar = "*"
 psycopg2 = "*"
+requests = "*"
+beautifulsoup4 = "*"
+translate = "*"
+fake-useragent = "*"
 
 [dev-packages]
 
