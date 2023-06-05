@@ -1,0 +1,169 @@
+/*SEARCH*/
+.icons-btn {
+    color: black;
+}
+
+.icons-btn span i {
+    display: block;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+}
+
+/*PAGINATOR*/
+.paginator a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 15.4px;
+    color: #515151;
+}
+
+a.paginator-previous, a.paginator-next {
+    background-color: #999999;
+    color: #fff;
+}
+
+.paginator-previous a {
+    color: #fff;
+}
+
+
+.paginator {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5vh;
+}
+
+
+.paginator .paginator-current, .paginator .paginator-first, .paginator .paginator-last, .paginator .paginator-next, .paginator .paginator-page, .paginator .paginator-previous {
+    margin: 0 5px 0 0;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 15.4px;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+
+.paginator .paginator-current, .paginator .paginator-current:hover, .paginator .paginator-current :hover, .paginator .paginator-first:hover, .paginator .paginator-first :hover, .paginator .paginator-last:hover, .paginator .paginator-last :hover, .paginator .paginator-next:hover, .paginator .paginator-next :hover, .paginator .paginator-page:hover, .paginator .paginator-page :hover, .paginator .paginator-previous:hover, .paginator .paginator-previous :hover {
+    background-color: #515151;
+    color: #fff;
+    border-radius: 3px;
+}
+
+/*END PAGINATOR*/
+
+.number {
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    line-height: 20px;
+    color: #000;
+    font-size: 12px;
+    background: #51eaea;
+    right: -5px;
+}
+
+
+.product-thumb img {
+    max-width: 100%;
+    height: auto;
+}
+
+.items-content {
+    padding: 50px 0;
+    /*background-color: #1161ed;*/
+}
+
+.items-content a {
+    color: #3289d2;
+    text-decoration: none;
+}
+
+.items-content a:hover {
+    color: #da2fca;
+    text-decoration: none;
+}
+
+
+.product-cart {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.06);
+    transition: all .3s;
+    background-color: #dcd6d6;
+}
+
+
+.product-cart:hover {
+    box-shadow: 0 14px 30px -15px rgba(0, 0, 0, 0.75);
+}
+
+
+.product-thumb a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    padding: 20px;
+}
+
+
+.product-thumb img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.product-details {
+    padding: 20px;
+}
+
+
+.product-details h4 a {
+    font-weight: 500;
+    display: block;
+    height: 60px;
+    overflow: hidden;
+}
+
+
+.product-details p {
+    font-size: 15px;
+    margin-bottom: 20px;
+    color: #999;
+    height: 44px;
+    overflow: hidden;
+}
+
+
+.product-bottom-details {
+    overflow: hidden;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.product-price {
+    font-size: 18px;
+    color: #a305d7;
+    font-weight: 600;
+}
+
+
+.product-price small {
+    color: #ccc;
+    font-weight: 400;
+    text-decoration: line-through;
+    margin-right: 5px;
+}
+
+
+.product-links {
+    font-size: 20px;
+    margin-left: 10px;
+
+}
