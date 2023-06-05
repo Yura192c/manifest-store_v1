@@ -1,0 +1,73 @@
+{% extends "main/layout.html" %}
+{% load static %}
+
+{% block cssblock %}
+
+    <link rel="stylesheet" href="{% static 'cart/css/detail.css' %}">
+{% endblock %}
+
+{% block title %}
+    Your shopping cart
+{% endblock %}
+
+{% block content %}
+    <h1>Ваша корзина</h1>
+    <table class="cart">
+        <thead>
+        <tr>
+            <th>Изображение</th>
+            <th>Товар</th>
+            <th>Количество</th>
+            <th>Удалить</th>
+            <th>Цена одного</th>
+            <th>Цена</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in cart %}
+            {% with product=item.product %}
+                <tr>
+                    <td>
+                        <div class="item_product">
+                            <a href="{{ product.get_absolute_url }}">
+                                {% for key, value in product.image_urs.items %}
+                                    {% if key == 'image1' %}
+                                        <a href="{{ product.get_absolute_url }}"><img src="{{ value }}"
+                                                                                      class="img-thumbnail w-200 h-200"
+                                                                                      alt=""></a>
+                                    {% endif %}
+                                {% endfor %}
+                            </a>
+                        </div>
+                    </td>
+                    <td>{{ product.name }}</td>
+                    <td>
+                        <form action="{% url "cart:cart_add" product.id %}" method="post">
+                            {{ item.update_quantity_form.quantity }}
+                            {{ item.update_quantity_form.update }}
+                            <input type="submit" value="Обновить">
+                            {% csrf_token %}
+                        </form>
+                    </td>
+                    <td><a href="{% url "cart:cart_remove" product.id %}">Удалить</a></td>
+                    <td class="num">${{ item.price }}</td>
+                    <td class="num">${{ item.total_price }}</td>
+                </tr>
+            {% endwith %}
+        {% endfor %}
+        <div class="total_info">
+            <tr class="total">
+                <td>Всего</td>
+                <td colspan="4"></td>
+                <td class="num">${{ cart.get_total_price }}</td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+    <p class="text-right">
+        <a href="{% url "product_list" %}" class="button light">Вернуться в каталог</a>
+        {#    <a href="{% url "orders:order_create" %}" class="button">#}
+        {#      Купить#}
+        {#    </a>#}
+    </p>
+{% endblock %}
