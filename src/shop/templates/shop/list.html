@@ -20,9 +20,9 @@
                     <form action="{% url 'shop:product_list' %}" method="get" id="search" style="display: flex;">
                         <input type="search" class="form-control " name="search" placeholder="Введите название..."
                                 {% if search != None %} value="{{ search }}" {% endif %}>
-                        {% if hender != None %}
-                            <select name="hender" id="" style="display: none;">
-                                <option value="{{ hender }}">{{ hender }}</option>
+                        {% if gender != None %}
+                            <select name="gender" id="" style="display: none;">
+                                <option value="{{ gender }}">{{ gender }}</option>
                             </select>
                         {% endif %}
                         <select name="sort" id="pet-select" style="border: ridge;">
@@ -112,19 +112,19 @@
     <div class="paginator">
         {% if page_obj %}
             {% if page_obj.has_previous %}
-                <a href="?{% if hender != None %}hender={{ hender }}&{% endif %}{% if search != None %}search={{ search }}&{% endif %}{% if sort != None %}sort={{ sort }}&{% endif %}page={{ page_obj.previous_page_number }}"
+                <a href="?{% if gender != None %}gender={{ gender }}&{% endif %}{% if search != None %}search={{ search }}&{% endif %}{% if sort != None %}sort={{ sort }}&{% endif %}page={{ page_obj.previous_page_number }}"
                    class="paginator-previous">
                     <i class="fa fa-chevron-left"></i></a>
 
             {% endif %}
             {#        {% if page_obj.paginator.num_pages > 5 %} <h1>------------</h1>{% endif %}#}
             {% for i in page_obj.paginator.num_pages|create_range:1 %}
-                <a href="?{% if hender != None %}hender={{ hender }}&{% endif %}{% if search != None %}search={{ search }}&{% endif %}{% if sort != None %}sort={{ sort }}&{% endif %}page={{ i }}"
+                <a href="?{% if gender != None %}gender={{ gender }}&{% endif %}{% if search != None %}search={{ search }}&{% endif %}{% if sort != None %}sort={{ sort }}&{% endif %}page={{ i }}"
                    class="paginator-page {% if page_obj.number == i %}paginator-current{% endif %}">{{ i }}</a>
             {% endfor %}
 
             {% if page_obj.has_next %}
-                <a href="?{% if hender != None %}hender={{ hender }}&{% endif %}{% if search != None %}search={{ search }}&{% endif %}page={{ page_obj.next_page_number }}"
+                <a href="?{% if gender != None %}gender={{ gender }}&{% endif %}{% if search != None %}search={{ search }}&{% endif %}page={{ page_obj.next_page_number }}"
                    class="paginator-next">
                     <i class="fa fa-chevron-right"></i></a>
             {% endif %}

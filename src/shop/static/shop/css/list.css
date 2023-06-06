@@ -9,7 +9,10 @@
     width: 40px;
     line-height: 40px;
 }
-
+#search {
+    display: flex;
+    flex-direction: column;
+}
 /*PAGINATOR*/
 .paginator a {
     text-decoration: none;

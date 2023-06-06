@@ -25,22 +25,32 @@
                 <h2>Product Details</h2>
             </div>
             <div class="row">
-                <div class="col-md-6">
-                    <div id="slider" class="owl-carousel product-slider">
-                        {% for key, value in product.image_urs.items %}
-                            <div class="item">
-                                <img src="{{ value }}" class="img-thumbnail w-200 h-200">
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div id="thumb" class="owl-carousel product-thumb">
-                        {% for key, value in product.image_urs.items %}
-                            <div class="item">
-                                <img src="{{ value }}" class="img-thumbnail w-200 h-200">
-                            </div>
-                        {% endfor %}
-                    </div>
+{#                <div class="col-md-6">#}
+{#                    <div id="slider" class="owl-carousel product-slider">#}
+{#                        {% for key, value in product.image_urs.items %}#}
+{#                            <div class="item">#}
+{#                                <img src="{{ value }}" class="img-thumbnail w-200 h-200">#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+{#                    </div>#}
+{#                    <div id="thumb" class="owl-carousel product-thumb">#}
+{#                        {% for key, value in product.image_urs.items %}#}
+{#                            <div class="item">#}
+{#                                <img src="{{ value }}" class="img-thumbnail w-200 h-200">#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+{#                    </div>#}
+{#                </div>#}
+            <div class="col-md-6 gallery-wrap">
+                <div class="img-big-wrap">
+                    <div> <a href="#"><img src="{{ product.image_urs.0 }}" class="img-fluid"></a></div>
                 </div>
+                <div class="img-small-wrap">
+                    {% for key, value in product.image_urs.items %}
+                        <div class="item-gallery"> <img src="{{ value }}" class="img-thumbnail w-200 h-200"></div>
+                    {% endfor %}
+                </div>
+            </div>
                 <div class="col-md-6">
                     <div class="product-dtl">
                         <div class="product-info">
@@ -62,7 +72,7 @@
                             <div class="col-md-6">
                                 <label for="color">Color</label>
                                 <select id="color" name="color" class="form-control">
-                                    <option>Blue</option>
+                                    <option>{{ product.color }}</option>
                                     <option>Green</option>
                                     <option>Red</option>
                                 </select>
@@ -142,11 +152,11 @@
 
 {% block jsblock %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"#}
+{#            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"#}
+{#            crossorigin="anonymous"></script>#}
+{#    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"#}
+{#            integrity="	sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"#}
+{#            crossorigin="anonymous"></script>#}
     <script src="{% static 'shop/js/detail.js' %}"></script>
 {% endblock %}
