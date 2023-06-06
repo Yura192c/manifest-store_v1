@@ -7,7 +7,7 @@ from .models import *
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'dollarRate', 'price',
-                    'available', 'updated', 'category', 'manufacturer', 'gender', 'get_image', 'id', 'slug']
+                    'available', 'updated', 'category', 'manufacturer', 'gender', 'color', 'get_image', 'id', 'slug']
     list_filter = ['available', 'created', 'updated']
     list_editable = ['price', 'available', 'gender']
     search_fields = ('name', 'manufacturer__name', 'category__name')
@@ -17,10 +17,10 @@ class ProductAdmin(admin.ModelAdmin):
         ('Автоматическое добавление', {
             'fields': ('gender', 'category', 'manufacturer', 'url', 'dollarRate')
         }),
-        # ('Ручное добавление', {
-        #     'classes': ['collapse'],
-        #     'fields': ('name', 'description', 'price', 'available', 'image_urs', 'sizes', 'slug')
-        # })
+        ('Ручное добавление', {
+            'classes': ['collapse'],
+            'fields': ('name', 'description', 'price', 'available', 'image_urs', 'sizes', 'slug', 'color')
+        })
     )
     # actions = ['update_price', 'publish', 'unpublish']
     # actions = ['publish', 'unpublish']
