@@ -36,17 +36,17 @@ def filters(request):
     search = request.GET.get('search', None)
     sort = request.GET.get('sort', None)
     page_number = request.GET.get('page', None)
-    hender = request.GET.get('hender', None)
+    gender = request.GET.get('gender', None)
 
     if search is not None:
-        if hender is not None:
-            products = Product.objects.filter(available=True, name__icontains=search, hender=hender)
+        if gender is not None:
+            products = Product.objects.filter(available=True, name__icontains=search, gender=gender)
         else:
             products = Product.objects.filter(available=True, name__icontains=search)
 
     else:
-        if hender is not None:
-            products = Product.objects.filter(available=True, hender=hender)
+        if gender is not None:
+            products = Product.objects.filter(available=True, gender=gender)
         else:
             products = Product.objects.filter(available=True)
 
@@ -77,6 +77,6 @@ def filters(request):
     data['sort'] = sort
     data['sorting_values'] = SORTING_VALUES
     data['page_obj'] = page_obj
-    data['hender'] = hender
+    data['gender'] = gender
 
     return data
