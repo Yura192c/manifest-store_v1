@@ -4,12 +4,21 @@
     --navColor: #FFFFFF;
 }
 
+/** {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+/*html, body {*/
+/*    height: 100%;*/
+/*}*/
+
 
 body {
     margin: 0;
     padding: 0;
     background: var(--white);
     font-family: 'Montserrat', sans-serif;
+    /*height: 100%;*/
 }
 
 
@@ -61,7 +70,6 @@ body {
 }
 
 /*END HEADER*/
-
 
 
 /* MENU */
@@ -183,6 +191,15 @@ body {
 }
 
 /* END MENU*/
+
+/*CONTENT*/
+
+.content {
+
+    min-height: calc(100vh - 328px);
+}
+
+/*END CONTENT*/
 
 
 /*FOOTER*/
