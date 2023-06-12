@@ -7,9 +7,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-INSTALLED_APPS = INSTALLED_APPS + ['debug_toolbar']
+INSTALLED_APPS += ['debug_toolbar']
 
-MIDDLEWARE = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE
+MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -21,4 +21,5 @@ DATABASES = {
     }
 }
 
+INTERNAL_IPS += ['127.0.0.1', 'localhost']
 print('development.py')
