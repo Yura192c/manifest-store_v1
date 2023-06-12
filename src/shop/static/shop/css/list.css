@@ -98,7 +98,7 @@ a.paginator-previous, a.paginator-next {
 .product-cart {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.06);
     transition: all .3s;
-    background-color: #dcd6d6;
+    background-color: #eee;
 }
 
 
