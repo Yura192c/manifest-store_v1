@@ -1,0 +1,84 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Оформление заказа{% endblock %}
+{% block cssblock %}
+    <style>
+        .form-control input {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="conrainer" style="margin: 0 2% 2%  ">
+        <div class="py-5 text-center">
+            <h2>Оформление заказа</h2>
+            <p class="lead">Заполните данные и ваш заказ будет обработан!</p>
+        </div>
+
+        <div class="row g-5">
+            <div class="col-md-5 col-lg-4 order-md-last">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-primary">Ваша корзина</span>
+                    <span class="badge bg-primary rounded-pill">{{ cart.get_total_items }}</span>
+                </h4>
+                <ul class="list-group mb-3">
+                    {% for item in cart %}
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">{{ item.product.name }}</h6>
+                                <small class="text-muted">Количество {{ item.quantity }}</small>
+                            </div>
+                            <span class="text-muted">₽{{ item.total_price }}</span>
+                        </li>
+                    {% endfor %}
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Всего (RUB)</span>
+                        <strong>₽{{ cart.get_total_price }}</strong>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Ваши данные</h4>
+                <form action="." method="post" class="order-form">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label for="firstName" class="form-label">Имя</label>
+                            <div class="form-control"> {{ form.first_name }}</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="lastName" class="form-label">Фамилия</label>
+                            <div class="form-control"> {{ form.last_name }}</div>
+                        </div>
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email
+                            </label>
+                            <div class="form-control"> {{ form.email }}</div>
+                        </div>
+                        <div class="col-12">
+                            <label for="address" class="form-label">Адрес</label>
+                            <div class="form-control"> {{ form.address }}</div>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="country" class="form-label">Страна</label>
+                            <div class="form-control"> {{ form.country }}</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="state" class="form-label">Город</label>
+                            <div class="form-control"> {{ form.city }}</div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="zip" class="form-label">Почтовый индекс</label>
+                            <div class="form-control"> {{ form.postal_code }}</div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
