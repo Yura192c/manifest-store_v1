@@ -11,63 +11,119 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Ваша корзина</h1>
-    <table class="cart">
-        <thead>
-        <tr>
-            <th>Изображение</th>
-            <th>Товар</th>
-            <th>Количество</th>
-            <th>Удалить</th>
-            <th>Цена одного</th>
-            <th>Цена</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for item in cart %}
-            {% with product=item.product %}
-                <tr>
-                    <td>
-                        <div class="item_product">
-                            <a href="{{ product.get_absolute_url }}">
-                                {% for key, value in product.image_urs.items %}
-                                    {% if key == 'image1' %}
-                                        <a href="{{ product.get_absolute_url }}"><img src="{{ value }}"
-                                                                                      class="img-thumbnail w-200 h-200"
-                                                                                      alt=""></a>
-                                    {% endif %}
-                                {% endfor %}
-                            </a>
+    <div class="product-card-cart-container">
+
+        <div class="container">
+            {% for item in cart %}
+                {% with product=item.product %}
+                    <div class="product-card-cart">
+
+                        {% for key, value in product.image_urs.items %}
+                            {% if key == 'image1' %}
+                                <a href="{{ product.get_absolute_url }}"><img src="{{ value }}" style="width: 100%;
+    height: 100%;"
+                                                                              alt="">
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+
+                        <div class="list-group list-group-flush product-card-cart-content">
+
+                            <div class="product-card-cart-content-name-price list-group-item">
+                                <div class="product-card-cart-content-name"> {{ product.name }}</div>
+                                <div class="product-card-cart-content-price"><h4><span
+                                        class="badge bg-dark">₽{{ product.price }}</span>
+                                </h4></div>
+                            </div>
+
+                            <div class="product-card-cart-content-quantity list-group-item">
+                                <div>Количсетво</div>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                        {{ item.update_quantity_form.quantity }}
+                                        {{ item.update_quantity_form.update }}
+                                        <input type="submit" value="Обновить">
+                                        {% csrf_token %}
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="product-card-cart-content-size list-group-item">
+                                <div>Размер</div>
+                                <h5><span class="badge bg-secondary">US: {{ item.size }}</span></h5>
+                            </div>
+                            <div class="product-card-cart-content-remove list-group-item">
+                                <div class="product-card-cart-this-total"> ₽{{ item.total_price }}</div>
+                                <a href="{% url "cart:cart_remove" product.id %}" class="btn btn-outline-secondary">Удалить</a>
+                            </div>
                         </div>
-                    </td>
-                    <td>{{ product.name }}</td>
-                    <td>
-                        <form action="{% url "cart:cart_add" product.id %}" method="post">
-                            {{ item.update_quantity_form.quantity }}
-                            {{ item.update_quantity_form.update }}
-                            <input type="submit" value="Обновить">
-                            {% csrf_token %}
-                        </form>
-                    </td>
-                    <td><a href="{% url "cart:cart_remove" product.id %}">Удалить</a></td>
-                    <td class="num">${{ item.price }}</td>
-                    <td class="num">${{ item.total_price }}</td>
-                </tr>
-            {% endwith %}
-        {% endfor %}
-        <div class="total_info">
-            <tr class="total">
-                <td>Всего</td>
-                <td colspan="4"></td>
-                <td class="num">${{ cart.get_total_price }}</td>
-            </tr>
+
+                    </div>
+                {% endwith %}
+            {% endfor %}
+            <div class="product-card-cart-container-inner mt-4 pt-4">
+            </div>
+
         </div>
-        </tbody>
-    </table>
+
+    </div>
+
+    {#    <h1>OLD</h1>#}
+    {#    <h1>Ваша корзина</h1>#}
+    {#    <table class="cart">#}
+    {#        <thead>#}
+    {#        <tr>#}
+    {#            <th>Изображение</th>#}
+    {#            <th>Товар</th>#}
+    {#            <th>Количество</th>#}
+    {#            <th>Удалить</th>#}
+    {#            <th>Цена одного</th>#}
+    {#            <th>Цена</th>#}
+    {#        </tr>#}
+    {#        </thead>#}
+    {#        <tbody>#}
+    {#        {% for item in cart %}#}
+    {#            {% with product=item.product %}#}
+    {#                <tr>#}
+    {#                    <td>#}
+    {#                        <div class="item_product">#}
+    {#                            <a href="{{ product.get_absolute_url }}">#}
+    {#                                {% for key, value in product.image_urs.items %}#}
+    {#                                    {% if key == 'image1' %}#}
+    {#                                        <a href="{{ product.get_absolute_url }}"><img src="{{ value }}"#}
+    {#                                                                                      class="img-thumbnail w-200 h-200"#}
+    {#                                                                                      alt=""></a>#}
+    {#                                    {% endif %}#}
+    {#                                {% endfor %}#}
+    {#                            </a>#}
+    {#                        </div>#}
+    {#                    </td>#}
+    {#                    <td>{{ product.name }}</td>#}
+    {#                    <td>#}
+    {#                        <form action="{% url "cart:cart_add" product.id %}" method="post">#}
+    {#                            {{ item.update_quantity_form.quantity }}#}
+    {#                            {{ item.update_quantity_form.update }}#}
+    {#                            <input type="submit" value="Обновить">#}
+    {#                            {% csrf_token %}#}
+    {#                        </form>#}
+    {#                    </td>#}
+    {#                    <td><a href="{% url "cart:cart_remove" product.id %}">Удалить</a></td>#}
+    {#                    <td class="num">${{ item.price }}</td>#}
+    {#                    <td class="num">${{ item.total_price }}</td>#}
+    {#                </tr>#}
+    {#            {% endwith %}#}
+    {#        {% endfor %}#}
+    {#        <div class="total_info">#}
+    {#            <tr class="total">#}
+    {#                <td>Всего</td>#}
+    {#                <td colspan="4"></td>#}
+    {#                <td class="num">${{ cart.get_total_price }}</td>#}
+    {#            </tr>#}
+    {#        </div>#}
+    {#        </tbody>#}
+    {#    </table>#}
     <p class="text-right">
-        <a href="{% url "shop:product_list" %}" class="button light">Вернуться в каталог</a>
-        {#    <a href="{% url "orders:order_create" %}" class="button">#}
-        {#      Купить#}
-        {#    </a>#}
+        <a href="{% url "order:order_create" %}" class="round-black-btn">
+            Купить
+        </a>
     </p>
 {% endblock %}
