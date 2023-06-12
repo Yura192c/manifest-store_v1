@@ -56,6 +56,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
+                'src.cart.context_processors.cart',
                 'src.shop.context_processors.footer_context'
             ],
         },
@@ -109,3 +110,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CART_SESSION_ID = 'cart'
 AUTH_USER_MODEL = 'account.CustomUser'
+INTERNAL_IPS = []
