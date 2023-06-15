@@ -89,9 +89,7 @@
 
 .product-card-cart {
     height: fit-content;
-    width: -webkit-fill-available;
-    width: -ms-fill-available;
-    width: -moz-fill-available;
+    width: auto;
 }
 
 .round-black-btn {
