@@ -75,12 +75,12 @@ class Product(models.Model):
     gender = models.CharField(max_length=3, choices=GENDER_CHOICES, default='ALL')
     category = models.ForeignKey(Category, related_name='products', on_delete=models.PROTECT)
     manufacturer = models.ForeignKey(Manufacturer, related_name='products', on_delete=models.PROTECT)
-    url = models.URLField(null=True, blank=False, help_text='Ссылка на товар на другом сайте')
+    url = models.URLField(null=True, blank=True, help_text='Ссылка на товар на другом сайте')
     image_urs = models.JSONField(null=True, blank=True)
     sizes = models.JSONField(null=True, blank=True)
     name = models.CharField(max_length=200, db_index=True, null=True, blank=True,
                             help_text='Наименование товара товара')
-    slug = models.SlugField(max_length=200, db_index=True)
+    slug = models.SlugField(max_length=200, db_index=True, default='test-object', null=True)
     dollarRate = models.ForeignKey(DollarRate, related_name='products', on_delete=models.PROTECT)
     description = models.TextField(blank=True, null=True, help_text='Описание товара')
     price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, help_text='Цена товара')
@@ -101,9 +101,7 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         """ Переопередение метода сохранения для заполнения данных модели данными из сайта-донора"""
-        # data = collect_data(self.url, self.manufacturer.name)
-        if self.id:
-            # if not Product.objects.filter(name=self.name).exists():
+        if not self.id:
             if self.url:
                 # Получение данных с другого сайта
                 data = collect_data(self.url, self.manufacturer.name)
@@ -129,17 +127,8 @@ class Product(models.Model):
                 self.name = data['name']
                 self.description = data['description']
 
-                self.slug = slugify(f'{self.manufacturer.name} {self.name} {self.color}')
-
-                # if Product.objects.filter(slug=slug).exists():
-                #     slug = slugify(f'{self.manufacturer.name} {self.name} {self.color}')
-
-            # else:
-            #     # Если не удалось получить данные, вызовется исключение ValidationError
-            #     raise ValidationError('Could not get data from the URL')
-            else:
-                # Если URL не задан, то вызовется исключение ValidationError
-                raise ValidationError('URL is required')
+        count = Product.objects.filter(name__icontains=self.name).count() + 1
+        self.slug = slugify(f'{self.manufacturer.name} {self.name} {count}')
 
         super(Product, self).save(*args, **kwargs)
 
