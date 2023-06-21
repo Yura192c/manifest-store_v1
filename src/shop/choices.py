@@ -5,4 +5,4 @@ SORTING_VALUES = (
     ('name_z_a', 'По алфавиту в обратном порядке'),
 )
 
-FILTER_HENDER = ('M', 'W', 'K')
+FILTER_GENDER = ('M', 'W', 'K')
