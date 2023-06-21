@@ -314,3 +314,13 @@
     text-transform: uppercase;
     cursor: pointer;
 }
+
+.img-small-wrap {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+    grid-gap: 10px 10px;
+    display: grid;
+    overflow: hidden;
+}
+.item-gallery {
+    max-width:300px;
+}
