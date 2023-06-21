@@ -1,7 +1,5 @@
 from .base import *  # подгружаем настройки по умолчанию
 
-
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-_=9yxshg3*kxp8djiwk$#lv%fft8d=5qpe(m@er3d81s2-#%km'
 
@@ -36,3 +34,8 @@ try:
 except ImportError:
     print('local_settings.py does not exist')
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# IMPORT EXPORT
+IMPORT_EXPORT_SKIP_ADMIN_CONFIRM = True
+IMPORT_EXPORT_USE_TRANSACTIONS = False
+IMPORT_EXPORT_SKIP_ADMIN_LOG = True

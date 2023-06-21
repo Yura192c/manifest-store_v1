@@ -12,6 +12,7 @@ beautifulsoup4 = "*"
 translate = "*"
 fake-useragent = "*"
 celery = "*"
+django-import-export = "*"
 
 [dev-packages]
 

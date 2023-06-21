@@ -160,6 +160,8 @@ cython_debug/
 .idea/
 .vscode/
 
+staticfiles/
 Dockerfile
 docker-compose.yml
 ```
+/parser_all_data/
