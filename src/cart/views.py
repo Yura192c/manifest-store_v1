@@ -16,7 +16,7 @@ def cart_add(request, product_id):
                  quantity=cd['quantity'],
                  size=cd['size'],
                  update_quantity=cd['update'])
-    return redirect('cart:cart_detail')
+    return redirect('shop:product_list')
 
 
 # @require_POST
