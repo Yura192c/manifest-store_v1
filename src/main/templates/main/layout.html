@@ -43,8 +43,8 @@
                     <a href="{% url 'shop:product_list' %}">
                         <li>Каталог</li>
                     </a>
-                    <a href="{% url 'cart:cart_detail' %}">
-                        <li>Корзина{% if cart.get_total_items %}: <small>{{ cart.get_total_items }} товара</small>{% endif %}</li>
+                    <a href="{% url 'cart:cart_detail' %}" >
+                        <li>Корзина<small class="cart-button" data-count="{{ cart.get_total_items }}"></small></li>
                     </a>
                     <a href="#">
                         <li>Покупателям</li>

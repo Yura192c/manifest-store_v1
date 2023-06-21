@@ -65,9 +65,19 @@ body {
 
 
 /* MENU */
-.menu {
-    /*height: 100vh;*/
-    /*height: calc(118px + 50vw + 25px);*/
+.cart-button:before {
+    content: attr(data-count);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 6em;
+    top: 15.6em;
+    background-color: #dd7973;
+    color: white;
+    border-radius: 50%;
+    width: 1.2em;
+    height: 1.2em;
 }
 
 
@@ -266,7 +276,7 @@ body {
 .footer-down {
     background-color: black;
     color: #FFFFFF;
-    max-height: 47px;
+    height: fit-content;
     width: 100%;
 }
 
