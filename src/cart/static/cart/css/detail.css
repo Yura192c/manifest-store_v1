@@ -80,11 +80,7 @@
 
 .container {
     display: grid;
-    /*grid-template-columns: 650px 100px;*/
-    grid-template-columns: repeat(auto-fit, minmax(620px, 100px));
-
     grid-gap: 20px 20px;
-
 }
 
 .product-card-cart {
@@ -114,4 +110,11 @@
     background: transparent;
     color: #212529;
     text-decoration: none;
+}
+
+.text-right {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
