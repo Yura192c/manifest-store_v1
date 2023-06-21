@@ -12,11 +12,14 @@
 
 {% block content %}
     {% load templatetsgs %}
+
+    <h6>{{ url_string }}</h6>
     <div class="site-navbar py-2">
         <div class="filters">
             <div class="search-wrap" style="display: flex">
                 <div class="container">
                     <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+
                     <form action="{% url 'shop:product_list' %}" method="get" id="search" style="display: flex;">
                         <input type="search" class="form-control " name="search" placeholder="Введите название..."
                                 {% if search != None %} value="{{ search }}" {% endif %}>
@@ -58,13 +61,6 @@
                     <div class="col-lg-4 col-sm-6 mb-3">
                         <div class="product-cart">
                             <div class="product-thumb">
-                                {#                                {% for key, value in product.image_urs.items %}#}
-                                {#                                    {% if key == 'image1' %}#}
-                                {#                                        <a href="{{ product.get_absolute_url }}"><img src="{{ value }}"#}
-                                {#                                                                                      class="img-thumbnail w-200 h-200"#}
-                                {#                                                                                      alt=""></a>#}
-                                {#                                    {% endif %}#}
-                                {#                                {% endfor %}#}
                                 <a href="{{ product.get_absolute_url }}"><img src="{{ product.image_urs.image1 }}"></a>
                             </div>
                             <div class="product-details">
@@ -76,11 +72,17 @@
                                     </div>
                                     <div class="product-links">
                                         <form action="{% url "cart:cart_add" product.id %}" method="post">
-                                            {{ cart_product_form }}
+                                            <div class="cart-form" style="display: none;">
+                                                {{ cart_product_form }}
+                                                </div>
+{#                                            <input type="submit" >#}
+                                            <button type="submit" class="btn btn-primary btn-sm"><i
+                                                class="fas fa-shopping-cart"></i></button>
+
+{#                                            <a href="{% url "cart:cart_add" product.id %}" type="submit"><i#}
+{#                                                class="fas fa-shopping-cart"></i></a>#}
                                             {% csrf_token %}
                                         </form>
-                                        <a href="{% url "cart:cart_add" product.id %}" method="post"><i
-                                                class="fas fa-shopping-cart"></i></a>
 
 
                                     </div>
@@ -92,49 +94,32 @@
             </div>
         </div>
     </section>
-    {#    <div class="pagination">#}
-    {#    <span class="step-links">#}
-    {#        {% if page_obj.has_previous %}#}
-    {#            <a href="?page=1">&laquo; first</a>#}
-    {#            <a href="?page={{ page_obj.previous_page_number }}">previous</a>#}
-    {#        {% endif %}#}
-    {##}
-    {#        <span class="current">#}
-    {#            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.#}
-    {#        </span>#}
-    {##}
-    {#        {% if page_obj.has_next %}#}
-    {#            <a href="?page={{ page_obj.next_page_number }}">next</a>#}
-    {#            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>#}
-    {#        {% endif %}#}
-    {#    </span>#}
-    {#    </div>#}
     <div class="paginator">
         {% if page_obj %}
             {% if page_obj.has_previous %}
-                <a href="?{% if gender != None %}gender={{ gender }}&{% endif %}{% if search != None %}search={{ search }}&{% endif %}{% if sort != None %}sort={{ sort }}&{% endif %}page={{ page_obj.previous_page_number }}"
+                <a href="{{ url_string }}&page={{ page_obj.previous_page_number }}"
                    class="paginator-previous">
                     <i class="fa fa-chevron-left"></i></a>
 
             {% endif %}
-            {#        {% if page_obj.paginator.num_pages > 5 %} <h1>------------</h1>{% endif %}#}
-            {% for i in page_obj.paginator.num_pages|create_range:1 %}
-                <a href="?{% if gender != None %}gender={{ gender }}&{% endif %}{% if search != None %}search={{ search }}&{% endif %}{% if sort != None %}sort={{ sort }}&{% endif %}page={{ i }}"
-                   class="paginator-page {% if page_obj.number == i %}paginator-current{% endif %}">{{ i }}</a>
+
+            {% for page_number in page_obj.paginator.get_elided_page_range %}
+                {% if page_number == page_obj.paginator.ELLIPSIS %}
+                    {{ page_number }}
+                {% else %}
+                    <a
+                            href="{{ url_string }}&page={{ page_number }}"
+                            class="paginator-page {% if page_number == page_obj.number %}paginator-current{% endif %}">{{ page_number }}</a>
+                {% endif %}
             {% endfor %}
 
             {% if page_obj.has_next %}
-                <a href="?{% if gender != None %}gender={{ gender }}&{% endif %}{% if search != None %}search={{ search }}&{% endif %}page={{ page_obj.next_page_number }}"
+                <a href="{{ url_string }}&page={{ page_obj.next_page_number }}"
                    class="paginator-next">
                     <i class="fa fa-chevron-right"></i></a>
             {% endif %}
         {% endif %}
     </div>
-
-    {#            {% for i in pages|create_range:1 %}#}
-    {#                <li><a href="?page={{ i }}">{{ i }}</a></li>#}
-    {#                <a href="?page={{ i }}" class="paginator-page paginator-page-first">{{ i }}</a>#}
-    {#            {% endfor %}#}
     <script>
         window.addEventListener('load', function () {
             document.querySelector('#pet-select').addEventListener('change', function (event) {

@@ -17,7 +17,8 @@ from src.cart.forms import CartAddProductForm
 
 def product_list(request: HttpRequest) -> HttpResponse:
     """List of products"""
-    data: Dict[str, Any] = filters(request)
+    data = filters(request)
+    data['cart_product_form'] = CartAddProductForm()
     return render(
         request,
         'shop/list.html',
@@ -29,12 +30,15 @@ def product_detail(request: HttpRequest, category_slug: Optional[str] = None,
                    pk: Optional[int] = None, slug: Optional[str] = None) -> HttpResponse:
     """Product details"""
     product = get_object_or_404(Product, id=pk, slug=slug, available=True)
+    similar_products = Product.objects.filter(category=product.category, name__icontains=product.name).exclude(
+        id=product.id)
     cart_product_form = CartAddProductForm()
     return render(
         request,
         'shop/detail.html',
         {
             'product': product,
+            'similar_products': similar_products,
             'cart_product_form': cart_product_form,
         }
     )
@@ -43,10 +47,10 @@ def product_detail(request: HttpRequest, category_slug: Optional[str] = None,
 def filters(request: HttpRequest) -> Dict[str, Union[Product, str, Optional[str], Dict[str, Any], Paginator]]:
     """Filters for products"""
     data: Dict[str, Union[Product, str, Optional[str], Dict[str, Any], Paginator]] = {}
-    search: Optional[str] = request.GET.get('search')
-    sort: Optional[str] = request.GET.get('sort')
-    page_number: Optional[str] = request.GET.get('page')
-    gender: Optional[str] = request.GET.get('gender')
+    search = request.GET.get('search', None)
+    sort = request.GET.get('sort', None)
+    page_number = request.GET.get('page', None)
+    gender = request.GET.get('gender', None)
 
     products: QuerySet[Product] = Product.objects.filter(available=True)
 
@@ -81,5 +85,11 @@ def filters(request: HttpRequest) -> Dict[str, Union[Product, str, Optional[str]
     data['sorting_values'] = SORTING_VALUES
     data['page_obj'] = page_obj
     data['gender'] = gender
+    # data['page'] = page_number if page_number else 1
 
+    url_params = '&'.join(
+        [f"{key}={data[key]}" for key in data if key not in ['products', 'sorting_values', 'page_obj'] and data[key]])
+
+    url_string = f"?{url_params}"
+    data['url_string'] = url_string
     return data
