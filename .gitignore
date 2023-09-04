@@ -164,4 +164,5 @@ staticfiles/
 Dockerfile
 docker-compose.yml
 ```
+parser_all_data/
 /parser_all_data/
